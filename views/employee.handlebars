@@ -1,0 +1,89 @@
+<!--Blue Heading-->
+
+<div class="row topRow">
+  <div class="mainBar col-12">
+    <div class="mainInfo row col-12">
+      <div class="col-6 topPadding left">
+        <img
+          class="userPhoto responsive-img"
+          src="../images/twotone_account_circle_black_48dp.png"
+          alt="user"
+        />
+        <h3 class="flow-text employeeName">Welcome {{user.name}}! </h3>
+        <h1 hidden id="userId">{{user.id}}</h1>
+      </div>
+      <!--Chart Graphic-->
+
+      <div style="text-align:center">
+        <h1>The Fake Company</h1>
+        <h5>Thank you for you hard work!</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Formatted charts-->
+<div class="row employee-row">
+
+  <div class="col s4 task-container">
+    {{#each tasks as |task|}}
+
+      <ul class="collection">
+        <div class="">
+          <h5>{{title}}</h5>
+          <h6><i>{{description}}</i></h6>
+          <h6><i>{{format_date due_date}}</i></h6>
+        </div>
+        <li class="collection-item avatar">
+          <i class="material-icons circle md-36">assignment</i>
+        </li>
+
+        {{#if task_status}}
+          <a
+            class="btn-floating halfway-fab waves-effect waves-light green button"
+          >
+            <i class="material-icons" id="{{id}}">check_circle</i>
+          </a>
+        {{else}}
+          <a
+            class="btn-floating halfway-fab waves-effect waves-light red button"
+          >
+            <i class="material-icons" id="{{id}}">check_circle</i>
+          </a>
+        {{/if}}
+      </ul>
+
+    {{/each}}
+
+  </div>
+
+  <div class="col-6 topPadding right">
+
+    <div class="col-12">
+
+      <canvas class="chart" id="myChart">
+      </canvas>
+    </div>
+
+  </div>
+
+</div>
+
+<!--Employee Tasks-->
+<!--ssssssssssssssssssssssssssssssssssssssssssssssssssssssss-->
+<div class="row" hidden>
+
+  {{#each tasks as |task|}}
+    <div class="col s12 m6 l4 left">
+      <div class="card container hoverable">
+
+        <h5 class="container topPadding">{{title}}</h5>
+        <p class="container">{{description}}</p>
+        <a class="btn-floating halfway-fab waves-effect waves-light red button">
+          <i class="material-icons" id="{{id}}">check_circle</i>
+        </a>
+      </div>
+
+    </div>
+  {{/each}}
+</div>
